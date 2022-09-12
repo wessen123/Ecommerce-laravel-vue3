@@ -4,7 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-
+use App\Models\Product;
+use App\Models\Processing;
 class Cart extends Model
 {
     use HasFactory;
@@ -17,4 +18,12 @@ class Cart extends Model
         'created_at',
         'updated_at',
     ];
+
+      /**
+     * Relationship with product.
+     */
+    public function product()
+    {
+        return $this-> hasMany(Product::class, 'id', 'product_id');
+    }
 }
